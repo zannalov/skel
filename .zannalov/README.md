@@ -3,12 +3,7 @@ Installation
 
 First clone this repository into your home directory
 
-    $ git clone git@github.com:zannalov/skel ~/.zannalov
-
-Then set the working directory of the repository to be your home directory
-
-    $ cd ~/.zannalov
-    $ git config core.worktree ~
+    $ git clone --config core.worktree="$HOME" git@github.com:zannalov/skel ~/.zannalov
 
 Add any machine-specific ignore files to the repository's exclude file instead of ~/.gitignore
 
