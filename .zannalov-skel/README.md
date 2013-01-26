@@ -22,7 +22,8 @@ Machine-specific ignores
 You may either maintain your own branch (committing to your own ~/.gitignore),
 or you may add things to the repository-specific ignore file.
 
-    # This would exclude the ".bash_profile" file from your home directory, but not, for example, "~/test-directory/.bash_profile"
+    # This would exclude the ".bash_profile" file from your home directory, but
+    # not, for example, "~/test-directory/.bash_profile"
     $ echo '/.bash_profile' >> ~/.zannalov-skel/.git/info/exclude
 
 Working with the repository
