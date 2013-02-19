@@ -1,0 +1,54 @@
+# Set zombies to not disappear just yet, have to use underscore to
+# banish them
+zombie _+
+
+# Display messages for a really, really long time so that we
+# definitely see them.
+msgwait 900
+
+# This has always bugged me. You might send a stop to a window, and
+# then be unable to send a start because the other characters you've
+# sent are gumming up the queue. How do you recover? Don't hang on to
+# the queue.
+defnonblock on
+
+# WARNING: Using the scrollback setting will eat up a lot of memory
+# over time as you build up windows.  Be aware that this happens.
+ignorecase on
+defscrollback 5000
+
+# Assign the current username to command #1. This assumes your
+# username won't change but once a week, at the most.
+backtick 1 604800 1 whoami
+
+# Assign the current machine name to command #2. This assumes your
+# hostname won't change but once a week, at the most.
+backtick 2 604800 1 hostname
+
+# By default, don't use the hardware status line and instead use the
+# bottom line of the display area for status.
+defhstatus off
+
+# Always show the caption and set what that caption should be
+caption always
+caption string "%{kg} %n %t %= %1`@%2` "
+
+# First screen should always be a login, don't register these as
+# logins though
+deflogin off
+bind c screen bash -l
+
+# Always clear the screen by scrolling so the scrollback buffer will
+# catch the previous screen's contents.
+termcapinfo * '' 'cl=\Ec'
+
+# Pass audible bells
+vbell off
+bell_msg "Bell in window %n.^G"
+
+# Don't show the annoying startup screen
+startup_message off
+
+# Add an artificial delay to allow finch to capture simulated alt/meta
+# key sequences when sent from mobile devices
+maptimeout 1000
