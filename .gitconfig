@@ -1,0 +1,8 @@
+[core]
+	excludesfile = ~/.gitignore
+[color]
+	branch = true
+	diff = true
+	interactive = true
+	pager = true
+	status = true
