@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ps -A --format=euser,egroup,tname,pid,ppid,rss,args --forest "${@}"

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+dirs=( "${@}" )
+if [[ "0" == "${#}" ]]; then
+    dirs=( "." )
+fi
+
+scrub=(
+    ".AppleDB"
+    ".AppleDesktop"
+    ".AppleDouble"
+    ".DS_Store"
+    "__MACOSX"
+    "Network Trash Folder"
+    "Temporary Items"
+    )
+
+find_args=( "-xdev" "-depth" "-ignore_readdir_race" "(" )
+first_arg=1
+for s in "${scrub[@]}" ; do
+    if [[ $first_arg == 1 ]]; then
+        first_arg=0
+    else
+        find_args+=( "-o" )
+    fi
+
+    find_args+=( "-name" "$s" )
+done
+
+find_args+=( ")" "-print0" )
+
+for d in "${dirs[@]}" ; do
+    find_command=( "find" "$d" "${find_args[@]}" )
+    xargs_command=( "xargs" "-0" "rm" "-rvf" )
+    echo "${find_command[@]}" '|' "${xargs_command[@]}" ';' echo 'Exit code: $?'
+    "${find_command[@]}" | "${xargs_command[@]}" ; echo "Exit code: $?"
+done
