@@ -1,38 +1,17 @@
-Installation
-============
+A Logical Collection of Files
+=============================
 
-    $ git init ~/.zannalov-skel
-    $ cd ~/.zannalov-skel
-    $ git config core.worktree "$HOME"
-    $ git remote add origin git@github.com:zannalov/skel
-    $ git fetch
-    $ git checkout master
+Any/all commands listed are optional. Wire into your login as you see fit! :-)
 
-If there are conflicts at this point, that means something in my skeleton
-conflicts with that which is already on your machine. There are a couple ways
-of going about solving this. Here are a few ideas:
+git
+---
 
-1.  Start your own machine-specific branch, commit those files, then merge in from my master branch (resolving the conflicts as you see fit).
-2.  Move your files out of the way, then run the checkout command again
-3.  Clone this repository as a plain-old repository and selectively import the bits you want
+    $ ln -s .zannalov-skel/git/config ~/.gitconfig
+    $ ln -s .zannalov-skel/git/ignore ~/.gitignore
 
-Machine-specific ignores
-========================
+screen
+------
 
-You may either maintain your own branch (committing to your own ~/.gitignore),
-or you may add things to the repository-specific ignore file.
+    $ ln -s .zannalov-skel/screen/rc ~/.screenrc
+    $ ln -s .zannalov-skel/screen/sit ~/bin/sit
 
-    # This would exclude the ".bash_profile" file from your home directory, but
-    # not, for example, "~/test-directory/.bash_profile"
-    $ echo '/.bash_profile' >> ~/.zannalov-skel/.git/info/exclude
-
-Working with the repository
-===========================
-
-You must be within its directory
-
-    $ cd ~/.zannalov-skel
-
-Or you must use the --git-dir option
-
-    $ git --git-dir=~/.zannalov-skel/.git
