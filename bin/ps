@@ -1,6 +1,0 @@
-#!/bin/bash
-
-export PATH="${PATH//:$(dirname "${BASH_SOURCE}")/}"
-export PATH="${PATH//$(dirname "${BASH_SOURCE}"):/}"
-
-exec ps -A --format=euser,egroup,tname,pid,ppid,rss,args --forest "${@}"

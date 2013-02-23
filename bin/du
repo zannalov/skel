@@ -1,6 +1,0 @@
-#!/bin/bash
-
-export PATH="${PATH//:$(dirname "${BASH_SOURCE}")/}"
-export PATH="${PATH//$(dirname "${BASH_SOURCE}"):/}"
-
-exec du --si --one-file-system --max-depth=1 --total "${@}"
