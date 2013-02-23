@@ -1,3 +1,6 @@
 #!/bin/bash
 
+export PATH="${PATH//:$(dirname "${BASH_SOURCE}")/}"
+export PATH="${PATH//$(dirname "${BASH_SOURCE}"):/}"
+
 exec diff --exclude=CVS --exclude=.svn --exclude=.git "${@}"
