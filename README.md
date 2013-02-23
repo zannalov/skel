@@ -18,6 +18,7 @@ Organized by destination directory
     $ ln -s .zannalov-skel/coreutils/df ~/bin/
     $ ln -s .zannalov-skel/coreutils/du ~/bin/
     $ ln -s .zannalov-skel/coreutils/ls ~/bin/
+    $ ln -s .zannalov-skel/git/git-unpack-refs ~/bin/
     $ ln -s .zannalov-skel/screen/sit ~/bin/
     $ ln -s .zannalov-skel/scripts/scrub-fs-junk ~/bin/
     $ ln -s .zannalov-skel/utils/diff ~/bin/
