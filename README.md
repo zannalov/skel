@@ -8,20 +8,20 @@ Organized by destination directory
 ~/
 --
 
-    $ ln -s .zannalov-skel/git/config ~/.gitconfig
-    $ ln -s .zannalov-skel/git/ignore ~/.gitignore
-    $ ln -s .zannalov-skel/screen/rc ~/.screenrc
+    $ ln .zannalov-skel/git/config ~/.gitconfig
+    $ ln .zannalov-skel/git/ignore ~/.gitignore
+    $ ln .zannalov-skel/screen/rc ~/.screenrc
 
 ~/bin/
 ------
 
-    $ ln -s .zannalov-skel/coreutils/df ~/bin/
-    $ ln -s .zannalov-skel/coreutils/du ~/bin/
-    $ ln -s .zannalov-skel/coreutils/ls ~/bin/
-    $ ln -s .zannalov-skel/git/git-unpack-refs ~/bin/
-    $ ln -s .zannalov-skel/screen/sit ~/bin/
-    $ ln -s .zannalov-skel/scripts/scrub-fs-junk ~/bin/
-    $ ln -s .zannalov-skel/utils/diff ~/bin/
-    $ ln -s .zannalov-skel/utils/free ~/bin/
-    $ ln -s .zannalov-skel/utils/ps ~/bin/
+    $ ln .zannalov-skel/coreutils/df ~/bin/
+    $ ln .zannalov-skel/coreutils/du ~/bin/
+    $ ln .zannalov-skel/coreutils/ls ~/bin/
+    $ ln .zannalov-skel/git/git-unpack-refs ~/bin/
+    $ ln .zannalov-skel/screen/sit ~/bin/
+    $ ln .zannalov-skel/scripts/scrub-fs-junk ~/bin/
+    $ ln .zannalov-skel/utils/diff ~/bin/
+    $ ln .zannalov-skel/utils/free ~/bin/
+    $ ln .zannalov-skel/utils/ps ~/bin/
 
