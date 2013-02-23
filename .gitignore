@@ -1,1 +1,4 @@
-git/ignore
+# Vim
+.swp
+.*.swp
+.viminfo
