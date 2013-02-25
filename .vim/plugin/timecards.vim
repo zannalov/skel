@@ -5,6 +5,7 @@
 let s:oneOrMoreWhiteSpace = "\\s\\+"
 let s:backMatchBeginningOfLineWhiteSpace = "\\(^\\s*\\)\\@<="
 let s:matchTime = "\\d\\d:\\d\\d\\(:\\d\\d\\)\\?"
+let s:padTimeLength = 8
 let s:placeholder = "\\(\\S.\\{0,7\\}\\)"
 
 function! s:gotoStartPos()
@@ -39,6 +40,11 @@ function! s:fillInPlaceholder()
     normal v
     call cursor( s:endLine , s:endEndChar )
     normal "ay
+
+    " Pad the timecard
+    while strlen( @a ) < s:padTimeLength
+        let @a = @a . " "
+    endwhile
 
     " Find the range of the placeholder
     call cursor( s:startLine , 1 )
