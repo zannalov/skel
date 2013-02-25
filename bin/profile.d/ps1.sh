@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export PS1='\$ '
+
 # If shell is running BASH and is interactive (interpretation is BASH specific, PS1 only matters on interactive shells)
 if [ -n "$BASH_VERSION" ] && ( echo $- | grep i >/dev/null 2>&1 ); then
 
@@ -21,11 +23,11 @@ if [ -n "$BASH_VERSION" ] && ( echo $- | grep i >/dev/null 2>&1 ); then
         # such a case would tend to support setf rather than setaf.)
         color_prompt=yes
     fi
-    
+
     if [[ z$color_prompt = zyes ]]; then
-        export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+        export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]$( hash git &>/dev/null && cd "$( git rev-parse --git-dir 2>/dev/null )" && test -f HEAD && sed -e "s/^\(..*\)/ \[\033[01;33m\](HEAD: \1)\[\033[00m\]/" HEAD ) \$ '
     else
-        export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+        export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$( hash git &>/dev/null && cd "$( git rev-parse --git-dir 2>/dev/null )" && test -f HEAD && sed -e "s/^\(..*\)/ (HEAD: \1)/" HEAD ) \$ '
     fi
     unset color_prompt debian_chroot
 
