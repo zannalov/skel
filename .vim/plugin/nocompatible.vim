@@ -1,0 +1,2 @@
+" PURE VIM!
+set nocompatible
