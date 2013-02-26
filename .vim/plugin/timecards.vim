@@ -8,24 +8,14 @@ let s:matchTime = "\\d\\d:\\d\\d\\(:\\d\\d\\)\\?"
 let s:padTimeLength = 8
 let s:placeholder = "\\(\\S.\\{0,7\\}\\)"
 
-function! s:gotoStartPos()
-    call cursor( s:topLine , 1 )
-    silent normal! zt
-    call cursor( s:startLine , s:startChar )
-endfunction
-
-function! s:gotoEndPos()
-    call cursor( s:topLine , 1 )
-    silent normal! zt
-    call cursor( s:endLine , s:endStartChar )
-endfunction
-
 function! s:reportError( errMsg )
     " Indicate to the user that it's a problem
     echoerr a:errMsg
 
     " Move cursor back to the exact place started
-    call s:gotoStartPos()
+    call cursor( s:topLine , 1 )
+    silent normal! zt
+    call cursor( s:startLine , s:startChar )
 
     " Cop out
     return 0
@@ -105,7 +95,12 @@ function! FillEndTimecard()
     call s:fillInPlaceholder()
 
     " Jump to the next timecard
-    call s:gotoEndPos()
+    call cursor( s:topLine , 1 )
+    silent normal! zt
+    call cursor( s:endLine , s:endStartChar )
+
+    " And if possible, jump to the beginning of the placeholder (otherwise stays at target timecard)
+    call search( s:matchTime . s:oneOrMoreWhiteSpace . '.' , "ce" , s:endLine )
 endfunction
 
 function! FillPointInTime()
