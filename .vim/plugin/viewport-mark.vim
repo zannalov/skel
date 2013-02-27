@@ -1,13 +1,12 @@
+" Marks in use in this file: v, w
+
 " A handy mark-my-place-and-return script
 function! ViewportMarkToggle( returnToPrevious )
     if a:returnToPrevious
-        call cursor( w:viewportMarkTopLine , 1 )
-        silent normal! zt
-        call cursor( w:viewportMarkLine , w:viewportMarkChar )
+        silent normal! `wzt`v
     else
-        let w:viewportMarkTopLine = line('w0')
-        let w:viewportMarkLine = line('.')
-        let w:viewportMarkChar = col('.')
+        silent normal! mvHmw
+        silent call ViewportMarkToggle( 1 )
         echo "Location tagged"
     endif
 endfunction
