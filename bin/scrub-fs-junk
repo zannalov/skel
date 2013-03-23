@@ -1,5 +1,11 @@
 #!/bin/bash
 
+dryrun=1
+if [[ "-ok" == "$1" ]]; then
+    dryrun=0
+    shift 1
+fi
+
 dirs=( "${@}" )
 if [[ "0" == "${#}" ]]; then
     dirs=( "." )
@@ -31,7 +37,12 @@ find_args+=( ")" "-print0" )
 
 for d in "${dirs[@]}" ; do
     find_command=( "find" "$d" "${find_args[@]}" )
-    xargs_command=( "xargs" "-0" "rm" "-rvf" )
+    if [[ "1" == "$dryrun" ]]; then
+        echo "In dry-run mode. Put -ok as the first parameter to actually delete"
+        xargs_command=( "xargs" "-L" "1" "-0" "echo" "Would remove: " )
+    else
+        xargs_command=( "xargs" "-L" "1" "-0" "rm" "-rvf" )
+    fi
     echo "${find_command[@]}" '|' "${xargs_command[@]}" ';' echo 'Exit code: $?'
     "${find_command[@]}" | "${xargs_command[@]}" ; echo "Exit code: $?"
 done
