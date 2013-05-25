@@ -16,9 +16,15 @@ scrub=(
     ".AppleDesktop"
     ".AppleDouble"
     ".DS_Store"
-    "__MACOSX"
+    ".Spotlight-*"
+    ".Trash-*"
+    ".Trashes"
+    "._*"
+    ".fseventsd"
     "Network Trash Folder"
     "Temporary Items"
+    "__MACOSX"
+    "thumbs.db"
     )
 
 find_args=( "-xdev" "-depth" "-ignore_readdir_race" "(" )
