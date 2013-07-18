@@ -6,3 +6,7 @@
 	interactive = true
 	pager = true
 	status = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
