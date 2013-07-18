@@ -1,0 +1,4 @@
+#!/usr/bin/env php
+<?php
+print( preg_replace( "/\\n/" , "" , nl2br( htmlentities( file_get_contents( "php://stdin" ) ) ) ) );
+?>
