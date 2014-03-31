@@ -10,3 +10,13 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[merge]
+	defaultToUpstream = true
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[push]
+	default = simple
+[daemon]
+	receivepack = true

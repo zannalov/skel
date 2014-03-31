@@ -2,3 +2,6 @@
 .swp
 .*.swp
 .viminfo
+
+# OS X
+.DS_Store

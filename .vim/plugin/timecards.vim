@@ -1,9 +1,9 @@
-" Format: beginning of line, zero or more white-space, time, white-space, timeOrPlaceholder, optionally white-space optionally followed by more text
+" Format: beginning of line, date, zero or more white-space, time, white-space, timeOrPlaceholder, optionally white-space optionally followed by more text
 " Time: HH:MM[:SS]
 " Placeholder: One non-white-space character followed by up to seven of any other character to be directly replaced (does match on white-space)
 
 let s:oneOrMoreWhiteSpace = "\\s\\+"
-let s:backMatchBeginningOfLineWhiteSpace = "\\(^\\s*\\)\\@<="
+let s:backMatchBeginningOfLineWhiteSpace = "\\(^\\s*\\|^\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\+\\)\\@<="
 let s:matchTime = "\\d\\d:\\d\\d\\(:\\d\\d\\)\\?"
 let s:padTimeLength = 8
 let s:placeholder = "\\(\\S.\\{0,7\\}\\)"

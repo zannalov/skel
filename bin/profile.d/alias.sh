@@ -12,7 +12,7 @@ if ( echo $- | grep i >/dev/null 2>&1 ); then
         alias du='du -x -d 1 -c'
         alias free='free -l -m -t'
         alias ls='ls -v -F -i -l'
-        alias ps='ps -A -o euser,egroup,tname,pid,ppid,rss,args'
+        alias ps='ps -A -o pid,ppid,rss,args'
     fi
     if [ "Linux" = "$( uname )" ]; then
         alias df='df -H -T'
