@@ -45,7 +45,9 @@ for d in "${dirs[@]}" ; do
     find_command=( "find" "$d" "${find_args[@]}" )
     if [[ "1" == "$dryrun" ]]; then
         echo "In dry-run mode. Put -ok as the first parameter to actually delete"
-        xargs_command=( "xargs" "-L" "1" "-0" "echo" "Would remove: " )
+        echo ""
+        echo "Would remove the following:"
+        xargs_command=( "xargs" "-L" "1" "-0" "ls" "-ld" )
     else
         xargs_command=( "xargs" "-L" "1" "-0" "rm" "-rvf" )
     fi
