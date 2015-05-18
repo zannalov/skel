@@ -1,0 +1,11 @@
+:JSHint	jshint.txt	/*:JSHint*
+AnsiEsc	AnsiEsc.txt	/*AnsiEsc*
+AnsiEsc-contents	AnsiEsc.txt	/*AnsiEsc-contents*
+AnsiEsc-copyright	AnsiEsc.txt	/*AnsiEsc-copyright*
+AnsiEsc-history	AnsiEsc.txt	/*AnsiEsc-history*
+AnsiEsc-manual	AnsiEsc.txt	/*AnsiEsc-manual*
+AnsiEsc.txt	AnsiEsc.txt	/*AnsiEsc.txt*
+LICENSE	jshint.txt	/*LICENSE*
+jshint	jshint.txt	/*jshint*
+jshint-author	jshint.txt	/*jshint-author*
+jshint.vim	jshint.txt	/*jshint.vim*
