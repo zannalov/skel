@@ -25,6 +25,7 @@ scrub=(
     "Temporary Items"
     "__MACOSX"
     "thumbs.db"
+    "\$RECYCLE.BIN"
     )
 
 find_args=( "-xdev" "-depth" "-ignore_readdir_race" "(" )
