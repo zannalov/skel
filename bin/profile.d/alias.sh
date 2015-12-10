@@ -13,7 +13,7 @@ if ( echo $- | grep i >/dev/null 2>&1 ); then
     if [ "Darwin" = "$( uname )" ]; then
         alias df='df -H'
         alias du='du -x -d 1 -c'
-        alias ls='ls -v -F -i -l'
+        alias ls='ls -G -v -F -i -l'
         alias ps='ps -A -o pid,ppid,rss,args'
     fi
 
