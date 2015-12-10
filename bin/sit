@@ -6,7 +6,9 @@ else
     WD="${PWD}"
 fi
 
-if [ -n "$WINDOW" ] && [ -n "$STY" ]; then
+if [ -n "$TMUX_PANE" ]; then
+    tmux new-window "$@"
+elif [ -n "$WINDOW" ] && [ -n "$STY" ]; then
     screen_pid="$( echo $STY | cut -d . -f 1  )"
     current_sty="$( screen -ls | grep -E -e "$screen_pid\\." )"
     export STY="$( echo "$current_sty" | cut -f 2 -d "$( printf "\t" )" )"
