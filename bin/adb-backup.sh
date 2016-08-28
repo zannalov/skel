@@ -72,7 +72,27 @@ exec 1>>backup.log 2>&1
 if [[ "1" = "$backup_shared" ]]; then
     echo "/mnt/sdcard"
     mkdir sdcard
-    "${adb[@]}" pull -p -a /mnt/sdcard/ ./sdcard/ || echo "Exit code: $?" # Fail soft on this one since a file transfer error will end the entire backup
+
+    # tar was barfing on file names greater than 100 characters long, otherwise this would have been ideal:
+    #"${adb[@]}" exec-out tar -c -f - -X /mnt/sdcard/.tar.exclude -C /mnt/sdcard/ . | tar -C sdcard -x -v -v
+
+    # So instead check to see if there's a top-level find command which produces a list of directories sans excludes
+    if ( "${adb[@]}" pull -p -a /mnt/sdcard/.adb-backup-find-grep.sh ./adb-backup-find-grep.sh ); then
+        # Run the command and store its output
+        "${adb[@]}" exec-out find /mnt/sdcard/ -type f | sed 's#^/mnt/sdcard/*##' > ./mnt-sdcard-find.txt
+        sh ./adb-backup-find-grep.sh < ./mnt-sdcard-find.txt > ./mnt-sdcard-find-grep.txt
+
+        # Iterate over the lines of the file
+        while IFS= read -r line
+        do
+            # And call pull for each one
+            echo "$line"
+            "${adb[@]}" pull -a /mnt/sdcard/"$line" ./sdcard/"$line" || echo "Exit code: $?" # Fail soft on this one since a file transfer error will end the entire backup
+        done < ./mnt-sdcard-find-grep.txt
+    else
+        # So instead
+        "${adb[@]}" pull -p -a /mnt/sdcard/ ./sdcard/ || echo "Exit code: $?" # Fail soft on this one since a file transfer error will end the entire backup
+    fi
     echo
 else
     echo "Skipping /mnt/sdcard"
@@ -101,7 +121,7 @@ function runBackupCommand() {
     # Tap the backup button by navigating to it via key presses
     # http://stackoverflow.com/a/28969112
     echo "Entering device ID as password and simulating button selection"
-    "${adb[@]}" shell input keyevent 19
+    #"${adb[@]}" shell input keyevent 19
     "${adb[@]}" shell input text "$device"
     "${adb[@]}" shell input keyevent 20 \; input keyevent 22 \; input keyevent 23
 
