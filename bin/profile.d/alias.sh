@@ -25,3 +25,18 @@ if ( echo $- | grep i >/dev/null 2>&1 ); then
     fi
 
 fi
+
+my_grep_options=(--color=auto) # I like color, without deprecation warnings
+
+if ( _version_gte "$( grep -V | head -n 1 | sed 's/[^0-9]*\([0-9]*\.[0-9]*\).*/\1/' )" "2.5.2" ); then
+    # The following adds new options for grep to exclude: CVS, .cvs, .git, .hg, .svn directories
+    my_grep_options=(
+        ${my_grep_options[@]} --exclude-dir=CVS)    # Excludes CVS directories for CVS
+        ${my_grep_options[@]} --exclude-dir=.cvs)   # Excludes .cvs directories for CVS
+        ${my_grep_options[@]} --exclude-dir=.git)   # Excludes .git directories for Git
+        ${my_grep_options[@]} --exclude-dir=.hg)    # Excludes .hg directories for Mercurial
+        ${my_grep_options[@]} --exclude-dir=.svn)   # Excludes .svn directors for Subversion
+    )
+    alias grep="grep $my_grep_options"
+    unset my_grep_options
+fi
