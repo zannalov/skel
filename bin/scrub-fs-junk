@@ -25,6 +25,9 @@ scrub=(
     "Temporary Items"
     "__MACOSX"
     "thumbs.db"
+    "Thumbs.db"
+    "desktop.ini"
+    "Desktop.ini"
     "\$RECYCLE.BIN"
     )
 
