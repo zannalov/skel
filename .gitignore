@@ -6,6 +6,7 @@
 
 # OS X
 .DS_Store
+.localized
 
 # npm
 npm-debug.log
