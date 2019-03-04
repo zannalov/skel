@@ -2,6 +2,7 @@
 .swp
 .*.swp
 .viminfo
+.vim/.netrwhist
 
 # OS X
 .DS_Store
