@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore.global
 [color]
 	branch = true
 	diff = true
@@ -20,3 +20,7 @@
 	default = simple
 [daemon]
 	receivepack = true
+[oh-my-zsh]
+	hide-dirty = 1
+[init]
+	defaultBranch = main

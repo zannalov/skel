@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Comment one of these two out
+#export LESSHISTFILE="/dev/null"
+LESSHISTFILE="${HOME}/.lesshst"
+export LESSHISTFILE
+
+# Increase the maximum size of the history
+LESSHISTSIZE="65535"
+export LESSHISTSIZE
+
+# Set command line options
+LESS=""
+LESS="$LESS"' --no-lessopen' # Don't run through XXD or the like
+LESS="$LESS"' --RAW-CONTROL-CHARS' # Pass ANSI Color Codes (ESC[...m) through
+LESS="$LESS"' --chop-long-lines' # :set nowrap
+LESS="$LESS"' --dumb' # Suppress error if terminal is dumb
+LESS="$LESS"' --force' # Suppress error if file is special
+LESS="$LESS"' --ignore-case' # Ignore search case if search is lower case
+LESS="$LESS"' --buffers=-1' # Infinite buffer space
+LESS="$LESS"' --shift=4' # Left-right keys
+export LESS

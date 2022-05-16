@@ -1,0 +1,3 @@
+#!/bin/sh
+# Remove all aliases (no unexpected shell behavior, thank you)
+unalias -a

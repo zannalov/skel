@@ -20,4 +20,7 @@
 #
 # m h  dom mon dow   command
 
-* * * * * printf '# as of ' > ~/.crontab ; date >> ~/.crontab ; crontab -l >> ~/.crontab
+# Note: The following line is great for debugging when cron has applied edits,
+# but is not good for long-term usage because it keeps hard drives spinning and
+# exercises SSDs.
+# * * * * * printf '# as of ' > ~/.crontab ; date >> ~/.crontab ; crontab -l >> ~/.crontab

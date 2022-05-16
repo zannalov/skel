@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# If shell is interactive (don't print this before running an SSH command, for example)
+if ( echo $- | grep i >/dev/null 2>&1 ); then
+  # If not in screen, list open screen sessions
+  if test -z "${WINDOW}" -a -z "${TMUX_PANE}" ; then
+    # If we have tmux
+    if ( command -v tmux >/dev/null 2>&1 ); then
+      echo '$ tmux list-sessions'
+      tmux list-sessions
+      echo # tmux doesn't end with an empty line
+    fi
+
+    # If we have screen
+    if ( command -v screen >/dev/null 2>&1 ); then
+      echo '$ screen -ls'
+      screen -ls
+      # screen outputs an empty line
+    fi
+  fi
+fi

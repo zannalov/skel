@@ -6,6 +6,8 @@
 
 # OS X
 .DS_Store
+.Trash
+.Trash-1000
 .localized
 
 # npm

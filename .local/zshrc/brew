@@ -1,0 +1,8 @@
+#!/bin/zsh
+# https://brew.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
+if type brew &>/dev/null; then
+  export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
