@@ -4,7 +4,7 @@
 checkExisting() {
 	echo "Checking if already existing device on file..."
 
-	while read fileLine; do
+	while read -r fileLine; do
 		if [ "$line" = "$fileLine" ]; then
 			echo "[WARNING] Device already initialized on this system. Nothing to do here"
 			open "$FILENAME"
@@ -25,10 +25,10 @@ addLine() {
 
 	checkExisting;
 	echo "# New NTFS HD: $volumeName on $(date) " >> /etc/fstab
-	echo $line >> /etc/fstab
+	echo "$line" >> /etc/fstab
 	device=$( diskutil info "$FILENAME" | grep "Device Node" | cut -d ':' -f2 | tr -d ' ' )
 	diskutil unmount "$FILENAME"
-	diskutil mount $device
+	diskutil mount "$device"
 	open "$FILENAME";
 	exit 0;
 }
