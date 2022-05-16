@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 IFS=$'\n'
 for f in $( git show-ref --heads ); do
