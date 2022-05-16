@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # Ported to Python from http://www.vim.org/scripts/script.php?script_id=1349
 
 print "Color indexes should be drawn in bold text of the same color."
